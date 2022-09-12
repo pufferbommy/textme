@@ -1,16 +1,16 @@
 import Header from '../components/Header'
-import Chat from '../components/Chat'
-import Member from '../components/Member'
+import ChatBox from '../components/ChatBox'
+import MemberBox from '../components/MemberBox'
 import Footer from '../components/Footer'
 
 const Home = () => {
   return (
     <div className="max-w-4xl mx-auto">
       <Header />
-      <div className="flex gap-4">
-        <Member />
-        <Chat />
-      </div>
+      <main className="flex flex-col sm:flex-row gap-6 h-[calc(100vh-64px-52px)] pt-0 sm:pt-10">
+        <MemberBox />
+        <ChatBox />
+      </main>
       <Footer />
     </div>
   )
