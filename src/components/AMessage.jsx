@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 
-const AMessage = ({ senderNickname, text }) => {
+const AMessage = ({ message }) => {
+  const { senderNickname, text } = message
   return (
     <div>
       <span className="text-sm underline">{senderNickname}</span>
@@ -10,8 +11,7 @@ const AMessage = ({ senderNickname, text }) => {
 }
 
 AMessage.propTypes = {
-  senderNickname: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  message: PropTypes.object.isRequired,
 }
 
 export default AMessage
