@@ -20,7 +20,7 @@ const MessageBox = () => {
   }, [])
 
   return (
-    <div className="rounded-lg flex-1">
+    <div className="rounded-lg flex-1 flex flex-col gap-2">
       {messages.map((message) => (
         <AMessage key={message.id} message={message} />
       ))}

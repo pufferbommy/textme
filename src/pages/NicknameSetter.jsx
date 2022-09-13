@@ -1,6 +1,8 @@
 import drawingDogImg from '../assets/hands-of-digital-artist-drawing-cute-comic-dog-on-graphic-tablet.png'
 import { useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../firebase'
 
 const NicknameSetter = () => {
   const inputRef = useRef(null)
@@ -10,7 +12,16 @@ const NicknameSetter = () => {
     e.preventDefault()
 
     const input = inputRef.current.value.trim()
-    localStorage.setItem('nickname', input)
+
+    addDoc(collection(db, 'members'), {
+      isOnline: true,
+      nickname: input,
+    }).then(({ id }) => {
+      localStorage.setItem(
+        'currentMember',
+        JSON.stringify({ id, nickname: input }),
+      )
+    })
 
     navigate('home')
   }

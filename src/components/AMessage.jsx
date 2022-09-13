@@ -4,7 +4,7 @@ const AMessage = ({ message }) => {
   const { senderNickname, text } = message
   return (
     <div>
-      <span className="text-sm underline">{senderNickname}</span>
+      <span className="text-sm capitalize underline">{senderNickname}</span>
       <p className="tracking-wide">{text}</p>
     </div>
   )

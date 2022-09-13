@@ -1,4 +1,6 @@
 import { useRef } from 'react'
+import { db } from '../firebase'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 
 const MessageSender = () => {
   const textareaRef = useRef(null)
@@ -6,7 +8,12 @@ const MessageSender = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const { value } = textareaRef.current
-    console.log(value)
+    addDoc(collection(db, 'messages'), {
+      senderNickname: JSON.parse(localStorage.getItem('currentMember'))
+        .nickname,
+      text: value,
+      timestamp: serverTimestamp(),
+    })
     textareaRef.current.value = ''
   }
 
